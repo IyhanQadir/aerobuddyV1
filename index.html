@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AeroBuddy | Your Runway to a Career in Aviation</title>
+  <meta name="description" content="AeroBuddy supports aviation aspirants and pilot training candidates with aviation courses, training pathways, and career guidance." />
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root{
+      --navy:#081c2f;
+      --sky:#1ca9c9;
+      --soft:#eef7fb;
+      --white:#ffffff;
+      --dark:#061322;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+    body{background:#f4f9fc;color:var(--navy);scroll-behavior:smooth;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+
+    /* NAVBAR */
+    .logo img{width:5rem}
+
+    header{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(12px)}
+    .nav{max-width:1200px;margin:auto;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+    /* .brand{font-weight:700;font-size:1.35rem}
+    .brand span{color:var(--sky)} */
+
+    .nav-links{display:flex;gap:2rem}
+    .nav-links a{font-weight:500;position:relative}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--sky);transition:.3s}
+    .nav-links a:hover::after{width:100%}
+
+    .hamburger{display:none;font-size:1.6rem;cursor:pointer}
+
+    @media(max-width:900px){
+      .nav-links{display:none;position:absolute;top:100%;left:0;width:100%;flex-direction:column;background:#fff;padding:2rem}
+      .nav-links.active{display:flex}
+      .hamburger{display:block}
+    }
+
+    section{padding:7rem 2rem;position:relative}
+
+    /* HERO */
+    .hero{height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden}
+    .hero-bg{
+      position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1483375801503-374c5f660610?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHBsYW5lfGVufDB8fDB8fHww') center/cover no-repeat;
+      will-change:transform
+    }
+    .hero-bg::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(6,19,34,.85),rgba(28,169,201,.45))
+    }
+    .hero-content{position:relative;max-width:820px;margin-left:6%}
+    .hero h1{font-size:3.4rem;line-height:1.15}
+    .hero p{margin:1.5rem 0;max-width:640px;opacity:.92}
+    .cta{background:var(--sky);padding:1rem 2.6rem;border-radius:40px;font-weight:600;display:inline-block}
+
+    /* FADE */
+    .fade{opacity:0;transform:translateY(60px);transition:1s}
+    .fade.visible{opacity:1;transform:none}
+
+    /* ABOUT */
+    .about-wrap{
+      max-width:1200px;margin:auto;
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:4rem;align-items:center
+    }
+    .eyebrow{letter-spacing:.2em;font-size:.75rem;color:var(--sky);font-weight:700}
+    .about-wrap img{
+      width:100%;border-radius:26px;
+      box-shadow:0 30px 80px rgba(0,0,0,.25)
+    }
+    .about-stats{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;margin-top:2rem
+    }
+    .about-stats div{
+      background:#fff;padding:1.5rem;border-radius:20px;
+      box-shadow:0 20px 40px rgba(0,0,0,.12);
+      text-align:center
+    }
+
+    /* COURSES */
+    .courses{background:var(--soft)}
+    .course-grid{
+      max-width:1200px;margin:auto;
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:2.5rem
+    }
+    .course{
+      background:#fff;border-radius:28px;
+      padding:3rem 2.2rem;
+      box-shadow:0 30px 70px rgba(0,0,0,.15);
+      transition:.4s
+    }
+    .course:hover{transform:translateY(-14px)}
+    .course i{font-size:2.6rem;color:var(--sky);margin-bottom:1rem}
+
+    /* PATHWAYS */
+    .pathway-grid{
+      max-width:1200px;margin:auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:2rem
+    }
+    .pathway{
+      background:#fff;border-radius:26px;
+      padding:2.4rem;
+      box-shadow:0 25px 60px rgba(0,0,0,.15)
+    }
+    .pathway span{font-weight:700;color:var(--sky)}
+
+    /* PROCESS */
+    .process-steps{
+      max-width:1000px;margin:auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:2rem
+    }
+    .step{
+      background:#fff;border-radius:26px;
+      padding:2.5rem;
+      box-shadow:0 25px 60px rgba(0,0,0,.15);
+      text-align:center
+    }
+    .step i{font-size:2.2rem;color:var(--sky);margin-bottom:1rem}
+
+    /* CONTACT */
+    .contact{
+      background:linear-gradient(135deg,#061322,#0b3c5d);
+      color:#fff;text-align:center
+    }
+    .contact-box{
+      max-width:900px;margin:auto;
+      background:rgba(255,255,255,.12);
+      backdrop-filter:blur(20px);
+      border-radius:36px;
+      padding:4.5rem 3rem
+    }
+
+    @media(max-width:900px){
+      .about-wrap,.course-grid,.pathway-grid,.process-steps{grid-template-columns:1fr}
+      .hero h1{font-size:2.4rem}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo"><img src="ABlogo.png" alt="BuddyMansion"></div>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#courses">Courses</a>
+      <a href="#pathways">Pathways</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Enquire</a>
+    </nav>
+    <div class="hamburger" id="hamburger"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" data-parallax></div>
+  <div class="hero-content fade">
+    <h1>Your Runway to a Career in Aviation</h1>
+    <p>From aviation education to professional pilot pathways — AeroBuddy guides you at every stage of your aviation journey.</p>
+    <a class="cta" href="#contact">Enquire Now</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="fade">
+  <div class="about-wrap">
+    <div>
+      <span class="eyebrow">ABOUT AEROBUDDY</span>
+      <h2>Built for the Next Generation of Aviators</h2>
+      <p>Aviation careers are complex, regulated, and global. AeroBuddy simplifies this journey by helping aspirants understand courses, licensing, medical requirements, and long-term career outcomes before they commit.</p>
+      <p>Our guidance is structured, transparent, and career-first — not guesswork.</p>
+
+      <div class="about-stats">
+        <div><strong>Global</strong><span><br>Training Awareness</span></div>
+        <div><strong>Career-First</strong><span><br>Guidance Model</span></div>
+        <div><strong>Aviation-Only</strong><span><br>Focused Support</span></div>
+      </div>
+    </div>
+    <img src="https://images.unsplash.com/photo-1544016768-982d1554f0b9?auto=format&fit=crop&w=1200&q=80">
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="courses fade">
+  <h2 style="text-align:center;margin-bottom:3rem">Aviation Courses</h2>
+  <div class="course-grid">
+    <div class="course"><i class="fas fa-plane"></i><h3>Pilot Training</h3><p>PPL, CPL, ATPL theory and structured flight training programs.</p></div>
+    <div class="course"><i class="fas fa-headset"></i><h3>Aviation Management</h3><p>Airport operations, airline management, and aviation business studies.</p></div>
+    <div class="course"><i class="fas fa-tools"></i><h3>Aeronautical Engineering</h3><p>Aircraft maintenance, avionics, and engineering pathways.</p></div>
+  </div>
+</section>
+
+<!-- PATHWAYS -->
+<section id="pathways" class="fade">
+  <h2 style="text-align:center;margin-bottom:3rem">Career Pathways</h2>
+  <div class="pathway-grid">
+    <div class="pathway"><span>01</span><h3>Commercial Pilot</h3><p>Flight schools → Airlines, charter, cargo, business aviation.</p></div>
+    <div class="pathway"><span>02</span><h3>Aviation Management</h3><p>Operational, regulatory, and leadership roles.</p></div>
+    <div class="pathway"><span>03</span><h3>Aircraft Maintenance</h3><p>Engineering, technical, and safety roles.</p></div>
+    <div class="pathway"><span>04</span><h3>Emerging Aviation</h3><p>UAVs, simulators, dispatch, and future aviation roles.</p></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="fade">
+  <h2 style="text-align:center;margin-bottom:3rem">Eligibility & Process</h2>
+  <div class="process-steps">
+    <div class="step"><i class="fas fa-user-check"></i><h3>Medical & Aptitude</h3><p>Academic review, eyesight, medical class requirements.</p></div>
+    <div class="step"><i class="fas fa-route"></i><h3>Pathway Mapping</h3><p>Country, licensing authority, training structure.</p></div>
+    <div class="step"><i class="fas fa-plane-departure"></i><h3>Training & Licensing</h3><p>Enrollment, exams, flight hours, certifications.</p></div>
+    <div class="step"><i class="fas fa-briefcase"></i><h3>Career Progression</h3><p>Airlines, type rating, interviews, long-term planning.</p></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact fade">
+  <div class="contact-box">
+    <h2>Take Off With AeroBuddy</h2>
+    <p>Speak with our aviation advisors and start planning your aviation career today.</p>
+    <a class="cta" href="mailto:connect@studiencollege.com">Enquire Now</a>
+  </div>
+</section>
+
+<script>
+  const hamburger=document.getElementById('hamburger');
+  const navLinks=document.getElementById('navLinks');
+  hamburger.addEventListener('click',()=>navLinks.classList.toggle('active'));
+
+  const bg=document.querySelector('[data-parallax]');
+  window.addEventListener('scroll',()=>{bg.style.transform=`translateY(${window.scrollY*0.3}px)`});
+
+  const fades=document.querySelectorAll('.fade');
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
+  },{threshold:.15});
+  fades.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
